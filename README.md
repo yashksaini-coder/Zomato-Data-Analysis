@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="https://socialify.git.ci/yashksaini-coder/Cognifyz/image?forks=1&issues=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Cognifyz" width="640" height="320" />
+</div>
+
 # Cognifyz Technologies Data Science Internship Project
 
 Welcome to the official repository for the Cognifyz Technologies Data Science Internship project. This project focuses on comprehensive Restaurant Data Analysis, aiming to uncover insights and build predictive models. Additionally, we leverage the power of Streamlit to create a dynamic and interactive dashboard, enhancing the data visualization experience.
@@ -12,9 +16,9 @@ Task List can be found [here](DS-Internship-Task.pdf). Click the link to access 
 
 ## Key Features:
 
-- **Data Analysis:** In-depth exploration of restaurant data to uncover trends, patterns, and anomalies.
-- **Predictive Modeling:** Development of robust models to forecast future trends and assist in decision-making.
-- **Interactive Dashboard:** A dynamic and interactive dashboard built with Streamlit, providing real-time insights and visualizations.
+- 📊 **Data Analysis:** In-depth exploration of restaurant data to uncover trends, patterns, and anomalies.
+- 📈 **Predictive Modeling:** Development of robust models to forecast future trends and assist in decision-making.
+- 🖥️ **Interactive Dashboard:** A dynamic and interactive dashboard built with Streamlit, providing real-time insights and visualizations.
 
 ## Getting Started
 
@@ -153,3 +157,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 I would like to express my gratitude to Cognifyz Technologies for providing me with the opportunity to work on this exciting project. Thank you for visiting my repository! I hope you love this interactive restaurant data analysis dashboard.
 
 Happy Coding!
+
