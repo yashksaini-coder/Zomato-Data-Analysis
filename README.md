@@ -10,7 +10,7 @@ In this project, we delve into the fascinating world of restaurant data, explori
 Task List can be found [here](DS-Internship-Task.pdf). Click the link to access the detailed task list for the Data Science Internship.
 
 
-### Key Features:
+## Key Features:
 
 - **Data Analysis:** In-depth exploration of restaurant data to uncover trends, patterns, and anomalies.
 - **Predictive Modeling:** Development of robust models to forecast future trends and assist in decision-making.
@@ -24,22 +24,27 @@ To get started with this project, follow the steps below:
 
 ```bash
 git clone https://github.com/yashksaini-coder/Cognifyz
+```
+
+2. **Navigate to the Project Directory:**
+
+```bash
 cd Cognifyz
 ```
 
-2. **Install the Required Packages:**
+3. **Install the Required Packages:**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Run the Streamlit App:**
+4. **Run the Streamlit App:**
 
 ```bash
 streamlit run app.py
 ```
 
-4. **Explore the Dashboard:**
+5. **Explore the Dashboard:**
 
 Open the Streamlit app in your browser and start exploring the interactive dashboard.
 
@@ -81,12 +86,12 @@ Thank you for your interest in contributing to our project! We welcome contribut
 
 To contribute to our project, follow these steps:
 
-1. **Fork the Repository:** Click on the "Fork" button at the top right corner of the repository page. This will create a copy of the repository in your GitHub account.
+1. **Fork the Repository:** Click on the [Fork](https://github.com/yashksaini-coder/Cognifyz/fork) button at the top right corner of the repository page. This will create a copy of the repository in your GitHub account.
 
 2. **Clone the Repository:** Open your terminal and navigate to the directory where you want to clone the repository. Use the following command to clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/your-username/Cognifyz.git
+    git clone clone https://github.com/yashksaini-coder/Cognifyz
     ```
 
 3. **Create a New Branch:** Before making any changes, create a new branch to work on. Use the following command to create a new branch:
@@ -145,8 +150,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-We would like to express our gratitude to Cognifyz Technologies for providing us with the opportunity to work on this exciting project. We are grateful for the guidance and support provided by the team throughout the internship journey.
-
-Thank you for visiting our repository! We hope you enjoy exploring the world of restaurant data analysis with us.
+I would like to express my gratitude to Cognifyz Technologies for providing me with the opportunity to work on this exciting project. Thank you for visiting my repository! I hope you love this interactive restaurant data analysis dashboard.
 
 Happy Coding!
