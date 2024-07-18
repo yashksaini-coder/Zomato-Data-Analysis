@@ -1,26 +1,20 @@
 <div align="center">
-    <img src="https://socialify.git.ci/yashksaini-coder/Cognifyz/image?forks=1&issues=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Cognifyz" width="640" height="320" />
+    <img align="center" src="https://socialify.git.ci/yashksaini-coder/Cognifyz/image?forks=1&issues=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Cognifyz" width="640" height="320" style="border: 4px solid #fff; border-radius: 10px;" />
 </div>
 
-# Cognifyz Technologies Data Science Internship Project
-
-Welcome to the official repository for the Cognifyz Technologies Data Science Internship project. This project focuses on comprehensive Restaurant Data Analysis, aiming to uncover insights and build predictive models. Additionally, we leverage the power of Streamlit to create a dynamic and interactive dashboard, enhancing the data visualization experience.
-
-## Project Overview
+## 🚀 Project Overview
 
 In this project, we delve into the fascinating world of restaurant data, exploring various aspects such as customer behavior, sales patterns, and operational efficiencies. Our goal is to extract actionable insights that can drive strategic decisions and foster growth in the competitive restaurant industry.
 
+📄 Task List can be found [here](DS-Internship-Task.pdf). Click the link to access the detailed task list for the Data Science Internship.
 
-Task List can be found [here](DS-Internship-Task.pdf). Click the link to access the detailed task list for the Data Science Internship.
-
-
-## Key Features:
+## 🔑 Key Features:
 
 - 📊 **Data Analysis:** In-depth exploration of restaurant data to uncover trends, patterns, and anomalies.
 - 📈 **Predictive Modeling:** Development of robust models to forecast future trends and assist in decision-making.
 - 🖥️ **Interactive Dashboard:** A dynamic and interactive dashboard built with Streamlit, providing real-time insights and visualizations.
 
-## Getting Started
+## 🛠️ Getting Started
 
 To get started with this project, follow the steps below:
 
@@ -52,8 +46,7 @@ streamlit run app.py
 
 Open the Streamlit app in your browser and start exploring the interactive dashboard.
 
-
-## Project Structure
+## 📁 Project Structure
 
 The project is structured as follows:
 
@@ -61,16 +54,17 @@ The project is structured as follows:
 Cognifyz
 ├── data
 │   ├── data.csv
-|
-│──Level-1.ipynb
-│──Level-2.ipynb
-│──Level-3.ipynb 
-|
+│
+├── notebooks
+│   ├── Level-1.ipynb
+│   ├── Level-2.ipynb
+│   ├── Level-3.ipynb 
+│
 ├── src
 │   ├── data_preprocessing.py
 │   ├── exploratory_data_analysis.py
 │   ├── predictive_modeling.py
-|
+│
 ├── app.py  
 ├── requirements.txt
 ├── README.md
@@ -82,11 +76,11 @@ Cognifyz
 - **app.py:** Streamlit app for the interactive dashboard.
 - **requirements.txt:** Required packages for the project.
 
-## Contributors
+## 🤝 Contributors
 
 Thank you for your interest in contributing to our project! We welcome contributions from the community to help improve and enhance our work. This guide will walk you through the process of contributing using Git commands.
 
-### Getting Started
+### 🌟 Getting Started
 
 To contribute to our project, follow these steps:
 
@@ -95,7 +89,7 @@ To contribute to our project, follow these steps:
 2. **Clone the Repository:** Open your terminal and navigate to the directory where you want to clone the repository. Use the following command to clone the repository to your local machine:
 
     ```bash
-    git clone clone https://github.com/yashksaini-coder/Cognifyz
+    git clone https://github.com/yashksaini-coder/Cognifyz
     ```
 
 3. **Create a New Branch:** Before making any changes, create a new branch to work on. Use the following command to create a new branch:
@@ -121,7 +115,7 @@ To contribute to our project, follow these steps:
 
 7. **Create a Pull Request:** Go to the original repository on GitHub and click on the "New Pull Request" button. Fill in the necessary details and submit your pull request.
 
-### Keeping Your Fork Up to Date
+### 🔄 Keeping Your Fork Up to Date
 
 To keep your forked repository up to date with the original repository, follow these steps:
 
@@ -148,13 +142,13 @@ To keep your forked repository up to date with the original repository, follow t
     ```bash
     git push origin your-branch-name
     ```
-## License
+
+## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgements
+## 🙏 Acknowledgements
 
 I would like to express my gratitude to Cognifyz Technologies for providing me with the opportunity to work on this exciting project. Thank you for visiting my repository! I hope you love this interactive restaurant data analysis dashboard.
 
-Happy Coding!
-
+Happy Coding! 🎉
