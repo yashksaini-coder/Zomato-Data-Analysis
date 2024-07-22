@@ -55,16 +55,10 @@ Cognifyz
 ├── data
 │   ├── data.csv
 │
-├── notebooks
-│   ├── Level-1.ipynb
-│   ├── Level-2.ipynb
-│   ├── Level-3.ipynb 
-│
-├── src
-│   ├── data_preprocessing.py
-│   ├── exploratory_data_analysis.py
-│   ├── predictive_modeling.py
-│
+├── DS-Internship-Task.pdf
+├── Level-1.ipynb
+├── Level-2.ipynb
+├── Level-3.ipynb 
 ├── app.py  
 ├── requirements.txt
 ├── README.md
