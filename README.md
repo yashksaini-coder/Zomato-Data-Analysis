@@ -65,14 +65,8 @@ Cognifyz
 ```
 
 - **data:** Contains the dataset used for analysis.
-- **notebooks:** Jupyter notebooks for different levels of analysis.
-- **src:** Source code files for data preprocessing, exploratory data analysis, and predictive modeling.
 - **app.py:** Streamlit app for the interactive dashboard.
 - **requirements.txt:** Required packages for the project.
-
-## 🤝 Contributors
-
-Thank you for your interest in contributing to our project! We welcome contributions from the community to help improve and enhance our work. This guide will walk you through the process of contributing using Git commands.
 
 ### 🌟 Getting Started
 
