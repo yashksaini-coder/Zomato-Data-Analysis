@@ -42,7 +42,14 @@ def main():
             st.write('---')
             
             st.write('Analyse the distribution of the target variable (“Aggregate rating”) and identify any class imbalances.')    
-            
+            df_aggregate = df[(df['Aggregate rating']>0)&(df['Votes']>0)]
+            plt.figure(figsize=(10, 6))
+            sns.histplot(df_aggregate['Aggregate rating'], bins=20, kde=True, palette='viridis')
+            plt.title('Distribution of Aggregate Rating')
+            plt.xlabel('Aggregate Rating')
+            plt.ylabel('Frequency')
+            plt.show()
+
 
     st.write('---')    
 
