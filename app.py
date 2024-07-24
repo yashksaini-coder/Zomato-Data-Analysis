@@ -25,42 +25,65 @@ def main():
             st.markdown('### Task 1: Data Exploration and Preprocessing')
             st.write('---')
             
-            st.write('Load the dataset and identify the number of rows and columns.')
+            st.markdown('- Load the dataset and identify the number of rows and columns.')
             df = pd.read_csv("./data/data.csv")
             st.write(df.head())
             st.write(f"Number of rows: {df.shape[0]}")
             st.write(f"Number of columns: {df.shape[1]}")
             st.write('---')
             
-            st.write('Check for missing values in each column and handle them.')
+            st.markdown('- Check for missing values in each column and handle them.')
             st.write(df.isnull().sum())
             st.write('---')
             
-            st.write('Perform data type conversion if necessary.')
+            st.markdown('- Perform data type conversion if necessary.')
             df['Votes'] = df['Votes'].astype(str).str.replace(',', '').astype(int)
             st.write("The Data processed is:-\n",df['Votes'])
             st.write('---')
             
-            st.write('Analyse the distribution of the target variable (“Aggregate rating”) and identify any class imbalances.')    
+            st.markdown('- Analyse the distribution of the target variable (“Aggregate rating”) and identify any class imbalances.')    
             df_aggregate = df[(df['Aggregate rating']>0)&(df['Votes']>0)]
             plt.figure(figsize=(10, 6))
             sns.histplot(df_aggregate['Aggregate rating'], bins=20, kde=True, palette='viridis')
             plt.title('Distribution of Aggregate Rating')
             plt.xlabel('Aggregate Rating')
             plt.ylabel('Frequency')
-            st.write(plt.show())
+            st.pyplot(plt)
 
         if task == 'Task 2' and selected_level == 'Level 1':
             st.markdown('### Task 2: Descriptive Analysis')
             
-            st.write('1. Calculate basic statistical measures (mean, median, standard deviation, etc.) for numerical columns.')
+            st.markdown('- Calculate basic statistical measures (mean, median, standard deviation, etc.) for numerical columns.')
             st.write(df.describe())
             
-            st.write('2. Explore the distribution of categorical variables like "Country Code," "City," and "Cuisines". ')
+            # st.write('2. Explore the distribution of categorical variables like "Country Code," "City," and "Cuisines". ')            
+            st.markdown("- Explore the distribution of `Country Code` categorical variables")
+            plt.figure(figsize=(14, 7))
+            sns.countplot(y='Country Code', data=df, order=df['Country Code'].value_counts().index)
+            plt.title('Distribution of Country Code')
+            st.pyplot(plt)
+            
+            st.markdown("- Explore the distribution of `City` categorical variables")
+            plt.figure(figsize=(14, 7))
+            sns.countplot(y='City', data=df, order=df['City'].value_counts().index[:20]) # Top 20 cities for better visualization
+            plt.title('Distribution of City')
+            st.pyplot(plt)
+            
+            st.markdown("- Explore the distribution of `Cuisines` categorical variables")            
+            plt.figure(figsize=(14, 7))
+            sns.countplot(y='Cuisines', data=df, order=df['Cuisines'].value_counts().index[:20]) # Top 20 cuisines for better visualization
+            plt.title('Distribution of Cuisines')
+            st.pyplot(plt)
+
             st.write('---')
-            st.write('3. Identify the top cuisines and cities with the highest number of restaurants.')
+            st.markdown('- Identify the top cuisines and cities with the highest number of restaurants.')
+            # Identify the top cuisines and cities with the highest number of restaurants
+            top_cuisines = df['Cuisines'].value_counts().head(10)
+            st.write('Top 10 Cuisines:\n', top_cuisines)
+            
+            top_cities = df['City'].value_counts().head(10)
+            st.write('Top 10 Cities:\n', top_cities)
             st.write('---')
-    st.write('---')    
 
 if __name__ == '__main__':
     main()
