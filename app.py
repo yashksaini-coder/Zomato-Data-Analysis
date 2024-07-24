@@ -38,7 +38,7 @@ def main():
             
             st.write('Perform data type conversion if necessary.')
             df['Votes'] = df['Votes'].astype(str).str.replace(',', '').astype(int)
-            st.write(f"The Data processed is:{df['Votes']}")
+            st.write("The Data processed is:-\n",df['Votes'])
             st.write('---')
             
             st.write('Analyse the distribution of the target variable (“Aggregate rating”) and identify any class imbalances.')    
@@ -48,9 +48,18 @@ def main():
             plt.title('Distribution of Aggregate Rating')
             plt.xlabel('Aggregate Rating')
             plt.ylabel('Frequency')
-            plt.show()
+            st.write(plt.show())
 
-
+        if task == 'Task 2' and selected_level == 'Level 1':
+            st.markdown('### Task 2: Descriptive Analysis')
+            
+            st.write('1. Calculate basic statistical measures (mean, median, standard deviation, etc.) for numerical columns.')
+            st.write(df.describe())
+            
+            st.write('2. Explore the distribution of categorical variables like "Country Code," "City," and "Cuisines". ')
+            st.write('---')
+            st.write('3. Identify the top cuisines and cities with the highest number of restaurants.')
+            st.write('---')
     st.write('---')    
 
 if __name__ == '__main__':
