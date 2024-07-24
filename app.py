@@ -14,6 +14,8 @@ tasks = {
 
 # Create the Streamlit web app
 def main():
+    st.title('Zomato Data Analysis')
+    
     st.sidebar.title('Navigation')
     selected_level = st.sidebar.selectbox('Select Level', list(tasks.keys()))
     selected_task = st.sidebar.selectbox('Select Task', tasks[selected_level])
