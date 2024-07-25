@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 # Define the tasks for each level
 tasks = {
@@ -82,8 +83,31 @@ def main():
         top_cities = df['City'].value_counts().head(10)
         st.write('Top 10 Cuisines:', top_cuisines)
         st.write('Top 10 Cities:', top_cities)
-    if selected_task == 'Task 3' and selected_level == 'Level 1':
         
+    if selected_task == 'Task 3' and selected_level == 'Level 1':
+        df = pd.read_csv("./data/data.csv") 
+        st.markdown("### Task 3: Geospatial Analysis")
+        
+        st.markdown("- Visualize the locations of restaurants on a map using latitude and longitude information.")
+        plt.figure(figsize=(14, 7))
+        fig = px.scatter_geo(df, lat='Latitude', lon='Longitude', hover_name='Restaurant Name', color='Aggregate rating',title='Restaurant Locations and Ratings')
+        st.plotly_chart(fig)
+        
+        st.write('---')        
+        
+        st.markdown("- Analyse the distribution of restaurants across different cities or countries.")
+        plt.figure(figsize=(14, 7))
+        fig = px.scatter_geo(df, lat='Latitude', lon='Longitude', hover_name='City', color='City',title='Restaurant Distribution by City')
+        st.plotly_chart(fig)
+        
+        st.write('---')
+        
+        st.markdown("- Determine if there is any correlation between the restaurant's location and its rating.")
+        plt.figure(figsize=(14, 7))
+        sns.scatterplot(data=df, x='Longitude', y='Latitude', hue='Aggregate rating', palette='coolwarm')
+        plt.title('Correlation between Location and Rating')
+        st.pyplot(plt)
+
         st.write('---')    
 
 if __name__ == '__main__':
