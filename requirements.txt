@@ -60,3 +60,4 @@ urllib3==2.2.2
 wcwidth==0.2.13
 Werkzeug==3.0.3
 zipp==3.19.2
+plotly==5.23.0
