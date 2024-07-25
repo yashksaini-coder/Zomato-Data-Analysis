@@ -220,7 +220,60 @@ def main():
         plt.ylabel('Average Rating')
         st.pyplot(plt)
         st.write('---')
+        
+    if selected_task == 'Task 3' and selected_level == 'Level 2':        
+        st.markdown("### Task 3: Feature Engineering")
+        df = pd.read_csv("./data/data.csv")
+        st.write('---')
+        
+        st.markdown("- Extract additional features from the existing columns, such as the length of the restaurant name or address.")
+        df['Restaurant Name Length'] = df['Restaurant Name'].apply(len)
+        df['Address Length'] = df['Address'].apply(len)
+        st.write('Extracted Features:\n', df[['Restaurant Name Length', 'Address Length']])
+        
+        st.write('---')
+        
+        st.markdown("- Create new features like `Has Table Booking` or `Has Online Delivery` by encoding categorical variables.")
+        df['Has Table Booking'] = df['Has Table booking'].apply(lambda x: 1 if x == 'Yes' else 0)
+        df['Has Online Delivery'] = df['Has Online delivery'].apply(lambda x: 1 if x == 'Yes' else 0)
+        
+        st.write('New Features:\n', df.head())
 
+        st.markdown("- Analyse the distribution of the newly created features.")        
+        plt.figure(figsize=(10, 6))
+        sns.histplot(df['Restaurant Name Length'], bins=20, kde=True)
+        plt.title('Distribution of Restaurant Name Length')
+        plt.xlabel('Restaurant Name Length')
+        plt.ylabel('Frequency')
+        st.pyplot(plt)
+        st.write('---')
+   
+        plt.figure(figsize=(10, 6))
+        sns.histplot(df['Address Length'], bins=20, kde=True)
+        plt.title('Distribution of Address Length')
+        plt.xlabel('Address Length')
+        plt.ylabel('Frequency')
+        st.pyplot(plt)
+        st.write('---')
+
+        st.markdown("- Analyse the count of Table Booking.")        
+        plt.figure(figsize=(10, 6))
+        sns.countplot(x='Has Table Booking', data=df)
+        plt.title('Count of Restaurants with/without Table Booking')
+        plt.xlabel('Has Table Booking')
+        plt.ylabel('Count')
+        st.pyplot(plt)
+        st.write('---')
+        
+        
+        st.markdown("- Analyse the count of Online Delivery.")
+        plt.figure(figsize=(10, 6))
+        sns.countplot(x='Has Online Delivery', data=df)
+        plt.title('Count of Restaurants with/without Online Delivery')
+        plt.xlabel('Has Online Delivery')
+        plt.ylabel('Count')
+        st.pyplot(plt)
+        st.write('---')
 
         
 if __name__ == '__main__':
