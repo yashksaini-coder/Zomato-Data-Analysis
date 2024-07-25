@@ -110,7 +110,118 @@ def main():
         plt.title('Correlation between Location and Rating')
         st.pyplot(plt)
 
-        st.write('---')    
+        st.write('---')
+        
+    if selected_task == 'Task 1' and selected_level == 'Level 2':
+        st.markdown("### Task 1: Table Booking and Online Delivery")
+        
+        df = pd.read_csv("./data/data.csv")
+        
+        st.markdown("- Determine the percentage of restaurants that offer table booking")
+        table_booking_percentage = df['Has Table booking'].value_counts(normalize=True) * 100
+        st.write('Percentage of restaurants that offer table booking:\n', table_booking_percentage)
 
+        st.markdown("- Determine the percentage of restaurants that offer online booking")
+        online_delivery_percentage = df['Has Online delivery'].value_counts(normalize=True) * 100
+        st.write('Percentage of restaurants that offer online delivery:\n', online_delivery_percentage)
+        st.write('---')
+        
+        st.markdown("- Compare the average ratings of restaurants with table booking and those without.")
+        avg_rating_table_booking = df.groupby('Has Table booking')['Aggregate rating'].mean()
+        st.write('Average rating of restaurants with/without table booking:\n', avg_rating_table_booking)
+        st.write('---')
+        
+        st.markdown("- Analyse the availability of online delivery among restaurants with different price ranges.")
+        online_delivery_price_range = df.groupby('Price range')['Has Online delivery'].value_counts(normalize=True).unstack() * 100
+        st.write('Online delivery availability by price range:\n', online_delivery_price_range)
+        st.write('---')
+        
+        st.markdown("- Determine the percentage of restaurants that offer table booking.")
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=table_booking_percentage.index, y=table_booking_percentage.values)
+        plt.title('Percentage of Restaurants Offering Table Booking')
+        plt.xlabel('Has Table Booking')
+        plt.ylabel('Percentage')
+        st.pyplot(plt)
+        st.write('---')
+        
+        st.markdown("- Determine the percentage of restaurants that offer online delivery.")
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=online_delivery_percentage.index, y=online_delivery_percentage.values)
+        plt.title('Percentage of Restaurants Offering Online Delivery')
+        plt.xlabel('Has Online Delivery')
+        plt.ylabel('Percentage')
+        st.pyplot(plt)
+        st.write('---')
+        
+        st.markdown("- Compare the average ratings of restaurants with table booking and those without.")
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=avg_rating_table_booking.index, y=avg_rating_table_booking.values)
+        plt.title('Average Rating of Restaurants with/without Table Booking')
+        plt.xlabel('Has Table Booking')
+        plt.ylabel('Average Rating')
+        st.pyplot(plt)
+        st.write('---')
+        
+        st.markdown("- Analyse the availability of online delivery among restaurants with different price ranges.")
+        plt.figure(figsize=(10, 6))
+        online_delivery_price_range.plot(kind='bar', stacked=True)
+        plt.title('Online Delivery Availability by Price Range')
+        plt.xlabel('Price Range')
+        plt.ylabel('Percentage')
+        plt.legend(title='Has Online Delivery', bbox_to_anchor=(1.05, 1), loc='upper left')
+        st.pyplot(plt)
+        st.write('---')
+        
+    if selected_task == 'Task 2' and selected_level == 'Level 2':
+        st.markdown("### Task 2: Price Range Analysis")
+        
+        df = pd.read_csv("./data/data.csv")
+        
+        st.markdown("- Determine the most common price range among all the restaurants")
+        most_common_price_range = df['Price range'].mode()[0]
+        st.write('Most common price range:', most_common_price_range)
+        st.write('---')
+        
+        st.markdown("- Calculate the average rating for each price range")
+        avg_rating_price_range = df.groupby('Price range')['Aggregate rating'].mean()
+        st.write('Average rating for each price range:\n', avg_rating_price_range)
+        st.write('---')
+        
+        st.markdown("- Identify the colour that represents the highest average rating among different price ranges.")
+        color_avg_rating = df.groupby('Price range')['Rating color'].agg(lambda x: x.mode()[0])
+        st.write('Color representing the highest average rating for each price range:\n', color_avg_rating)
+        st.write('---')
+    
+        st.markdown("- Visualize the distribution of price range among all the restaurants.")
+        plt.figure(figsize=(10, 6))
+        sns.countplot(x='Price range', data=df, order=df['Price range'].value_counts().index)
+        plt.title('Distribution of Price Range')
+        plt.xlabel('Price Range')
+        plt.ylabel('Count')
+        st.pyplot(plt)
+        st.write('---')
+        
+        st.markdown("- Identify the most common price range among all the restaurants.")
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=avg_rating_price_range.index, y=avg_rating_price_range.values)
+        plt.title('Average Rating by Price Range')
+        plt.xlabel('Price Range')
+        plt.ylabel('Average Rating')
+        st.pyplot(plt)
+        st.write('---')
+        
+        st.markdown("- Identify the colour that represents the highest average rating among different price ranges.")
+        color_rating_df = pd.DataFrame({'Price range': avg_rating_price_range.index, 'Rating color': color_avg_rating.values})
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x='Price range', y='Price range', data=color_rating_df, hue='Rating color', dodge=False)
+        plt.title('Color Representing the Highest Average Rating by Price Range')
+        plt.xlabel('Price Range')
+        plt.ylabel('Average Rating')
+        st.pyplot(plt)
+        st.write('---')
+
+
+        
 if __name__ == '__main__':
     main()
