@@ -5,6 +5,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, r2_score
+import plotly.graph_objs as go
+
 
 # Define the tasks for each level
 tasks = {
@@ -223,25 +231,25 @@ def main():
         
     if selected_task == 'Task 3' and selected_level == 'Level 2':        
         st.markdown("### Task 3: Feature Engineering")
-        df = pd.read_csv("./data/data.csv")
+        df2 = pd.read_csv("./data/data.csv")
         st.write('---')
         
         st.markdown("- Extract additional features from the existing columns, such as the length of the restaurant name or address.")
-        df['Restaurant Name Length'] = df['Restaurant Name'].apply(len)
-        df['Address Length'] = df['Address'].apply(len)
-        st.write('Extracted Features:\n', df[['Restaurant Name Length', 'Address Length']])
+        df['Restaurant Name Length'] = df2['Restaurant Name'].apply(len)
+        df['Address Length'] = df2['Address'].apply(len)
+        st.write('Extracted Features:\n', df2[['Restaurant Name Length', 'Address Length']])
         
         st.write('---')
         
         st.markdown("- Create new features like `Has Table Booking` or `Has Online Delivery` by encoding categorical variables.")
-        df['Has Table Booking'] = df['Has Table booking'].apply(lambda x: 1 if x == 'Yes' else 0)
-        df['Has Online Delivery'] = df['Has Online delivery'].apply(lambda x: 1 if x == 'Yes' else 0)
+        df2['Has Table Booking'] = df2['Has Table booking'].apply(lambda x: 1 if x == 'Yes' else 0)
+        df2['Has Online Delivery'] = df2['Has Online delivery'].apply(lambda x: 1 if x == 'Yes' else 0)
         
-        st.write('New Features:\n', df.head())
+        st.write('New Features:\n', df2.head())
 
         st.markdown("- Analyse the distribution of the newly created features.")        
         plt.figure(figsize=(10, 6))
-        sns.histplot(df['Restaurant Name Length'], bins=20, kde=True)
+        sns.histplot(df2['Restaurant Name Length'], bins=20, kde=True)
         plt.title('Distribution of Restaurant Name Length')
         plt.xlabel('Restaurant Name Length')
         plt.ylabel('Frequency')
@@ -249,7 +257,7 @@ def main():
         st.write('---')
    
         plt.figure(figsize=(10, 6))
-        sns.histplot(df['Address Length'], bins=20, kde=True)
+        sns.histplot(df2['Address Length'], bins=20, kde=True)
         plt.title('Distribution of Address Length')
         plt.xlabel('Address Length')
         plt.ylabel('Frequency')
@@ -258,7 +266,7 @@ def main():
 
         st.markdown("- Analyse the count of Table Booking.")        
         plt.figure(figsize=(10, 6))
-        sns.countplot(x='Has Table Booking', data=df)
+        sns.countplot(x='Has Table Booking', data=df2)
         plt.title('Count of Restaurants with/without Table Booking')
         plt.xlabel('Has Table Booking')
         plt.ylabel('Count')
@@ -268,11 +276,74 @@ def main():
         
         st.markdown("- Analyse the count of Online Delivery.")
         plt.figure(figsize=(10, 6))
-        sns.countplot(x='Has Online Delivery', data=df)
+        sns.countplot(x='Has Online Delivery', data=df2)
         plt.title('Count of Restaurants with/without Online Delivery')
         plt.xlabel('Has Online Delivery')
         plt.ylabel('Count')
         st.pyplot(plt)
+        st.write('---')
+
+    if selected_task == 'Task 1' and selected_level == 'Level 3':
+        df = pd.read_csv("./data/data.csv")
+        
+        st.markdown("### Task 1: Predictive Modelling")
+
+        st.markdown(" **Preprocess the data**: Handle categorical variables and normalize the data.")
+        
+        le = LabelEncoder()
+        df['Cuisines'] = le.fit_transform(df['Cuisines'])
+        df['City'] = le.fit_transform(df['City'])
+        df['Country Code'] = le.fit_transform(df['Country Code'])
+        df['Rating color'] = le.fit_transform(df['Rating color'])
+        df['Has Table booking'] = df['Has Table booking'].apply(lambda x: 1 if x == 'Yes' else 0)
+        df['Has Online delivery'] = df['Has Online delivery'].apply(lambda x: 1 if x == 'Yes' else 0)
+        st.write('Data after preprocessing:\n', df.head())
+        
+        
+        # Select features and target variable
+        features = ['Country Code', 'City', 'Cuisines', 'Price range', 'Has Table booking', 'Has Online delivery']
+        X = df[features]
+        y = df['Aggregate rating']
+        
+        st.markdown("- **Split the data**: Split the dataset into training and testing sets.")
+        
+        # Splitting the data into Train & Test datasets
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        
+        st.write('---')
+        
+        
+        # Standardize the features
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
+
+        st.markdown("- **Build and evaluate models**: Train and evaluate different regression models.")
+        # Train and evaluate different regression models
+        models = {
+            'Linear Regression': LinearRegression(),
+            'Decision Tree': DecisionTreeRegressor(random_state=42),
+            'Random Forest': RandomForestRegressor(random_state=42)
+        }
+        st.write('---')
+        # Displaying the models
+        st.write("The models used are:-\n",models)
+        
+        results = {}
+        for name, model in models.items():
+            model.fit(X_train, y_train)
+            y_pred = model.predict(X_test)
+            mse = mean_squared_error(y_test, y_pred)
+            r2 = r2_score(y_test, y_pred)
+            results[name] = {'MSE': mse, 'R2': r2}
+            
+        st.write('---')
+        # Display results
+        results_df = pd.DataFrame(results).T
+        st.write("After predication the scores are:-\n",results_df)
+        st.write('---')
+        
+        st.markdown("- **Split the data**: Split the dataset into training and testing sets.")
         st.write('---')
 
         
