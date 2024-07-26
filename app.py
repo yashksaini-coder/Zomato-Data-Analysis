@@ -305,8 +305,6 @@ def main():
         X = df[features]
         y = df['Aggregate rating']
         
-        st.markdown("- **Split the data**: Split the dataset into training and testing sets.")
-        
         # Splitting the data into Train & Test datasets
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         
@@ -325,7 +323,7 @@ def main():
             'Decision Tree': DecisionTreeRegressor(random_state=42),
             'Random Forest': RandomForestRegressor(random_state=42)
         }
-        st.write('---')
+        
         # Displaying the models
         st.write("The models used are:-\n",models)
         
@@ -343,8 +341,6 @@ def main():
         st.write("After predication the scores are:-\n",results_df)
         st.write('---')
         
-        st.markdown("- **Split the data**: Split the dataset into training and testing sets.")
-        st.write('---')
 
         
 if __name__ == '__main__':
