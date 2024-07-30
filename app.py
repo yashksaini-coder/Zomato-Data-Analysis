@@ -235,8 +235,8 @@ def main():
         st.write('---')
         
         st.markdown("- Extract additional features from the existing columns, such as the length of the restaurant name or address.")
-        df['Restaurant Name Length'] = df2['Restaurant Name'].apply(len)
-        df['Address Length'] = df2['Address'].apply(len)
+        df2['Restaurant Name Length'] = df2['Restaurant Name'].apply(len)
+        df2['Address Length'] = df2['Address'].apply(len)
         st.write('Extracted Features:\n', df2[['Restaurant Name Length', 'Address Length']])
         
         st.write('---')
@@ -341,6 +341,66 @@ def main():
         st.write("After predication the scores are:-\n",results_df)
         st.write('---')
         
+        st.markdown("- Visualize the performance of different regression models using a bar chart.")
+        results_df.plot(kind='bar', figsize=(10, 6))
+        plt.title('Model Performance Comparison')
+        plt.xlabel('Model')
+        plt.ylabel('Score')
+        st.pyplot(plt)
+        st.write('---')
+        
+    if selected_task == 'Task 2' and selected_level == 'Level 3':
+        df = pd.read_csv("./data/data.csv")
+               
+        le = LabelEncoder()
+        df['Cuisines'] = le.fit_transform(df['Cuisines'])
+        df['City'] = le.fit_transform(df['City'])
+        df['Country Code'] = le.fit_transform(df['Country Code'])
+        df['Rating color'] = le.fit_transform(df['Rating color'])
+        df['Has Table booking'] = df['Has Table booking'].apply(lambda x: 1 if x == 'Yes' else 0)
+        df['Has Online delivery'] = df['Has Online delivery'].apply(lambda x: 1 if x == 'Yes' else 0)
+        
+        features = ['Country Code', 'City', 'Cuisines', 'Price range', 'Has Table booking', 'Has Online delivery']
+        X = df[features]
+        y = df['Aggregate rating']
+        
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
+
+        models = {
+            'Linear Regression': LinearRegression(),
+            'Decision Tree': DecisionTreeRegressor(random_state=42),
+            'Random Forest': RandomForestRegressor(random_state=42)
+        }
+        
+        results = {}
+        for name, model in models.items():
+            model.fit(X_train, y_train)
+            y_pred = model.predict(X_test)
+            mse = mean_squared_error(y_test, y_pred)
+            r2 = r2_score(y_test, y_pred)
+            results[name] = {'MSE': mse, 'R2': r2}
+            
+        results_df = pd.DataFrame(results).T
+        
+        st.markdown("### Task 2: Customer Prefernece Analysis")
+        
+        st.markdown("- Analyse the relationship between the type of cuisine and the restaurant's rating")
+        cuisine_ratings = df.groupby('Cuisines')['Aggregate rating'].mean().sort_values(ascending=False)
+        st.write('Average rating by cuisine:\n', cuisine_ratings)
+        
+        st.markdown("- Identify the most popular cuisines based on the number of votes")
+        cuisine_votes = df.groupby('Cuisines')['Votes'].sum().sort_values(ascending=False)
+        st.write('Most popular cuisines based on votes:\n', cuisine_votes)
+        
+        st.markdown("- Determine if there are any specific cuisines that tend to receive higher ratings")
+        top_cuisines = cuisine_ratings.head(10)
+        st.write('Top 10 cuisines with highest ratings:\n', top_cuisines)
+
+
 
         
 if __name__ == '__main__':
