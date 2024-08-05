@@ -12,3 +12,4 @@ scikit-learn==1.5.1
 scipy==1.14.0
 seaborn==0.13.2
 streamlit==1.37.0
+streamlit-extras==0.4.3
