@@ -11,7 +11,6 @@ from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
-import plotly.graph_objs as go
 
 
 # Define the tasks for each level
@@ -23,6 +22,7 @@ tasks = {
 
 # Create the Streamlit web app
 def main():
+    st.set_page_config(page_title="Zomato Data Analysis", page_icon="🥘", layout="wide")
     st.title('Zomato Data Analysis')
     
     st.sidebar.title('Navigation')
@@ -399,8 +399,26 @@ def main():
         st.markdown("- Determine if there are any specific cuisines that tend to receive higher ratings")
         top_cuisines = cuisine_ratings.head(10)
         st.write('Top 10 cuisines with highest ratings:\n', top_cuisines)
+        
+    
+    if selected_task == 'Task 3' and selected_level == 'Level 3':
+        st.write("Restaurant Ratings Analysis")
+        df = pd.read_csv("./data/data.csv")
 
+        st.write("### Distribution of Aggregate Rating")
+        st.plotly_chart(px.histogram(df, x='Aggregate rating', nbins=20, title='Distribution of Aggregate Rating'))
 
+        st.write("### Average Rating by Cuisine")
+        st.plotly_chart(px.bar(df, x='Cuisines', y='Aggregate rating', title='Average Rating by Cuisine'))
+
+        st.write("### Aggregate Rating by City")
+        st.plotly_chart(px.violin(df, y='Aggregate rating', x='City', box=True, points='all', title='Aggregate Rating by City'))
+
+        st.write("### Hexbin Plot of Ratings by Location")
+        st.plotly_chart(px.density_heatmap(df, x='Longitude', y='Latitude', z='Aggregate rating', nbinsx=30, nbinsy=30, title='Hexbin Plot of Ratings by Location'))
+
+        st.write("### Bubble Plot of Ratings vs Votes")
+        st.plotly_chart(px.scatter(df, x='Votes', y='Aggregate rating', size='Price range', color='City', hover_name='Restaurant Name', title='Bubble Plot of Ratings vs Votes'))
 
         
 if __name__ == '__main__':
