@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "echo",
+			"type": "shell",
+			"command": "echo Hello"
+		},
+		{
+			"type": "docker-build",
+			"label": "docker-build",
+			"platform": "python",
+			"dockerBuild": {
+				"tag": "zomatodataanalysis:latest",
+				"dockerfile": "${workspaceFolder}/Dockerfile",
+				"context": "${workspaceFolder}",
+				"pull": true
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run: debug",
+			"dependsOn": [
+				"docker-build"
+			],
+			"python": {
+				"file": "app.py"
+			}
+		}
+	]
+}
