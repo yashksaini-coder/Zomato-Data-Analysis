@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://github.com/yashksaini-coder/Cognifyz"><img align="center" src="https://socialify.git.ci/yashksaini-coder/Cognifyz/image?forks=1&issues=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Cognifyz" width="640" height="320" style="border: 4px solid #fff; border-radius: 10px;" /></a>
+    <a href="https://github.com/yashksaini-coder/Zomato-Data-Analysis"><img align="center" src="https://socialify.git.ci/yashksaini-coder/Cognifyz/image?forks=1&issues=1&name=1&owner=0&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Cognifyz" width="640" height="320" style="border: 4px solid #fff; border-radius: 10px;" /></a>
 </div>
 
 ## 🚀 Project Overview
