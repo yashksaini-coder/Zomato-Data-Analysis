@@ -20,6 +20,12 @@ tasks = {
     'Level 3': ['Task 1', 'Task 2', 'Task 3']
 }
 
+#read in data
+@st.cache_data
+def get_data():
+    df = pd.read_csv('./data/data.csv')
+    return df
+
 # Create the Streamlit web app
 def main():
     st.set_page_config(page_title="Zomato Data Analysis", page_icon="🥘", layout="wide")
@@ -37,7 +43,7 @@ def main():
         st.write('---')
         
         st.markdown('- Load the dataset and identify the number of rows and columns.')
-        df = pd.read_csv("./data/data.csv")
+        df = get_data()
         st.write(df.head())
         st.write(f"Number of rows: {df.shape[0]}")
         st.write(f"Number of columns: {df.shape[1]}")
@@ -63,7 +69,7 @@ def main():
 
     if selected_task == 'Task 2' and selected_level == 'Level 1':
         st.markdown('### Task 2: Descriptive Analysis')
-        df = pd.read_csv("./data/data.csv")
+        df = get_data()
         st.markdown('- Calculate basic statistical measures (mean, median, standard deviation, etc.) for numerical columns.')
         st.write(df.describe())
         
@@ -95,7 +101,7 @@ def main():
         st.write('Top 10 Cities:', top_cities)
         
     if selected_task == 'Task 3' and selected_level == 'Level 1':
-        df = pd.read_csv("./data/data.csv") 
+        df = get_data() 
         st.markdown("### Task 3: Geospatial Analysis")
         
         st.markdown("- Visualize the locations of restaurants on a map using latitude and longitude information.")
@@ -123,7 +129,7 @@ def main():
     if selected_task == 'Task 1' and selected_level == 'Level 2':
         st.markdown("### Task 1: Table Booking and Online Delivery")
         
-        df = pd.read_csv("./data/data.csv")
+        df = get_data()
         
         st.markdown("- Determine the percentage of restaurants that offer table booking")
         table_booking_percentage = df['Has Table booking'].value_counts(normalize=True) * 100
@@ -184,7 +190,7 @@ def main():
     if selected_task == 'Task 2' and selected_level == 'Level 2':
         st.markdown("### Task 2: Price Range Analysis")
         
-        df = pd.read_csv("./data/data.csv")
+        df = get_data()
         
         st.markdown("- Determine the most common price range among all the restaurants")
         most_common_price_range = df['Price range'].mode()[0]
@@ -231,7 +237,7 @@ def main():
         
     if selected_task == 'Task 3' and selected_level == 'Level 2':        
         st.markdown("### Task 3: Feature Engineering")
-        df2 = pd.read_csv("./data/data.csv")
+        df2 = get_data()
         st.write('---')
         
         st.markdown("- Extract additional features from the existing columns, such as the length of the restaurant name or address.")
@@ -284,7 +290,7 @@ def main():
         st.write('---')
 
     if selected_task == 'Task 1' and selected_level == 'Level 3':
-        df = pd.read_csv("./data/data.csv")
+        df = get_data()
         
         st.markdown("### Task 1: Predictive Modelling")
 
@@ -350,7 +356,7 @@ def main():
         st.write('---')
         
     if selected_task == 'Task 2' and selected_level == 'Level 3':
-        df = pd.read_csv("./data/data.csv")
+        df = get_data()
                
         le = LabelEncoder()
         df['Cuisines'] = le.fit_transform(df['Cuisines'])
@@ -402,8 +408,7 @@ def main():
         
     
     if selected_task == 'Task 3' and selected_level == 'Level 3':
-        st.write("Restaurant Ratings Analysis")
-        df = pd.read_csv("./data/data.csv")
+        df = get_data()
 
         st.write("### Distribution of Aggregate Rating")
         st.plotly_chart(px.histogram(df, x='Aggregate rating', nbins=20, title='Distribution of Aggregate Rating'))
