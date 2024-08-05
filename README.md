@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://github.com/yashksaini-coder/Zomato-Data-Analysis"><img align="center" src="https://socialify.git.ci/yashksaini-coder/Cognifyz/image?forks=1&issues=1&name=1&owner=0&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Cognifyz" width="640" height="320" style="border: 4px solid #fff; border-radius: 10px;" /></a>
+    <a href="https://github.com/yashksaini-coder/Zomato-Data-Analysis"><img align="center" src="https://socialify.git.ci/yashksaini-coder/Zomato-Data-Analysis/image?forks=1&issues=1&name=1&owner=0&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Zomato-Data-Analysis" width="640" height="320" style="border: 4px solid #fff; border-radius: 10px;" /></a>
 </div>
 
 ## 🚀 Project Overview
@@ -21,13 +21,13 @@ To get started with this project, follow the steps below:
 1. **Clone the Repository:**
 
 ```bash
-git clone https://github.com/yashksaini-coder/Cognifyz
+git clone https://github.com/yashksaini-coder/Zomato-Data-Analysis
 ```
 
 2. **Navigate to the Project Directory:**
 
 ```bash
-cd Cognifyz
+cd Zomato-Data-Analysis
 ```
 
 3. **Install the Required Packages:**
@@ -51,17 +51,27 @@ Open the Streamlit app in your browser and start exploring the interactive dashb
 The project is structured as follows:
 
 ```bash
-Cognifyz
-├── data
-│   ├── data.csv
-│
-├── DS-Internship-Task.pdf
-├── Level-1.ipynb
-├── Level-2.ipynb
-├── Level-3.ipynb 
-├── app.py  
-├── requirements.txt
-├── README.md
+Zomato-Data-Analysis
+  ├─ .streamlit/
+  │  └─ config.toml
+  ├─ .vscode/
+  │  ├─ launch.json
+  │  └─ tasks.json
+  ├─ data/
+  │  └─ data.csv
+  ├─ .dockerignore
+  ├─ .gitignore
+  ├─ app.py
+  ├─ docker-compose.debug.yml
+  ├─ docker-compose.yml
+  ├─ Dockerfile
+  ├─ DS-Internship-Task.pdf
+  ├─ Level-1.ipynb
+  ├─ Level-2.ipynb
+  ├─ Level-3.ipynb
+  ├─ LICENSE
+  ├─ README.md
+  └─ requirements.txt
 ```
 
 - **data:** Contains the dataset used for analysis.
@@ -72,12 +82,12 @@ Cognifyz
 
 To contribute to our project, follow these steps:
 
-1. **Fork the Repository:** Click on the [Fork](https://github.com/yashksaini-coder/Cognifyz/fork) button at the top right corner of the repository page. This will create a copy of the repository in your GitHub account.
+1. **Fork the Repository:** Click on the [Fork](https://github.com/yashksaini-coder/Zomato-Data-Analysis/fork) button at the top right corner of the repository page. This will create a copy of the repository in your GitHub account.
 
 2. **Clone the Repository:** Open your terminal and navigate to the directory where you want to clone the repository. Use the following command to clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/your-username/Cognifyz
+    git clone https://github.com/your-username/Zomato-Data-Analysis
     ```
 
 3. **Create a New Branch:** Before making any changes, create a new branch to work on. Use the following command to create a new branch:
@@ -110,7 +120,7 @@ To keep your forked repository up to date with the original repository, follow t
 1. **Add the Upstream Remote:** In your terminal, navigate to your local repository and use the following command to add the upstream remote:
 
     ```bash
-    git remote add upstream https://github.com/yashksaini-coder/Cognifyz.git
+    git remote add upstream https://github.com/yashksaini-coder/Zomato-Data-Analysis.git
     ```
 
 2. **Fetch the Latest Changes:** Use the following command to fetch the latest changes from the upstream repository:
@@ -134,9 +144,5 @@ To keep your forked repository up to date with the original repository, follow t
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgements
-
-I would like to express my gratitude to Cognifyz Technologies for providing me with the opportunity to work on this exciting project. Thank you for visiting my repository! I hope you love this interactive restaurant data analysis dashboard.
 
 Happy Coding! 🎉
