@@ -2,6 +2,8 @@
     <a href="https://github.com/yashksaini-coder/Zomato-Data-Analysis"><img align="center" src="https://socialify.git.ci/yashksaini-coder/Zomato-Data-Analysis/image?forks=1&issues=1&name=1&owner=0&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto" alt="Zomato-Data-Analysis" width="640" height="320" style="border: 4px solid #fff; border-radius: 10px;" /></a>
 </div>
 
+[![Docker](https://github.com/yashksaini-coder/Zomato-Data-Analysis/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/yashksaini-coder/Zomato-Data-Analysis/actions/workflows/docker-publish.yml)
+
 ## 🚀 Project Overview
 
 In this project, we delve into the fascinating world of restaurant data, exploring various aspects such as customer behavior, sales patterns, and operational efficiencies. Our goal is to extract actionable insights that can drive strategic decisions and foster growth in the competitive restaurant industry.
